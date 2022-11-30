@@ -1,0 +1,85 @@
+@import '~@tezign/intelligence-common/lib/style/builds.scss';
+
+// 等比缩放
+// 高度按宽度等比变化
+
+@mixin uniform-scale($ratio) {
+  position: relative;
+  height: 0;
+  padding-bottom: $ratio;
+
+  :global(.inner_content) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin build-tz-link($name, $color, $color-hover) {
+  .tz-link-#{$name} {
+    color: $color !important;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $color-hover !important;
+    }
+  }
+}
+
+@include build-tz-link('primary', $color-primary, $color-primary-dark);
+
+@include build-tz-link('danger', $color-danger, $color-danger-dark);
+
+@include build-tz-link('warning', $color-warning, $color-warning-dark);
+
+@include build-tz-link('hint', $color-hint, $color-hint-dark);
+
+@include build-tz-link('help', $color-help, $color-help-dark);
+
+@include build-tz-link('text', $color-text, $color-text-dark);
+
+@include build-colors('bg', $color-bg);
+
+@include build-colors('bg-light', $color-bg-light);
+
+@include build-colors('white', $color-white);
+
+@include build-colors('border-light', $color-border-light);
+
+@include build-colors('border', $color-border);
+
+@include build-colors('border-dark', $color-border-dark);
+
+@mixin build-flex($start, $end) {
+
+  @for $i from $start through $end {
+    .flex-#{$i} {
+      flex: $i;
+    }
+
+    .flex-shrink-#{$i} {
+      flex-shrink: $i;
+    }
+  }
+}
+
+@include build-flex(0, 24);
+
+// 下面是用来覆盖 tezign-ui 默认样式的 mixin，设计师@杨甜甜给出的样式总是和 tezign-ui 的样式不一致
+// 然后定义一些需要在多个地方重置的样式
+
+// Select 组件添加左侧搜索图标，不要 border
+
+@mixin select-input-addon-before-no-border {
+
+  .addon-before {
+    border-right: none;
+  }
+
+  .ant-select-selection__rendered {
+    margin-left: 0;
+  }
+}

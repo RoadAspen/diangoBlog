@@ -1,0 +1,22 @@
+/** 覆盖原组件样式，不建议写 */
+html,
+body {
+  width: auto !important;
+  height: auto !important;
+}
+
+.ant-select {
+
+  .ant-select-selection.ant-select-selection--multiple {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+// 禁用折叠时且没有下拉箭头时，减少内容区域的空白高度
+.ant-collapse-item.ant-collapse-item-disabled.ant-collapse-no-arrow {
+
+  .ant-collapse-content-box {
+    padding-top: 0;
+  }
+}

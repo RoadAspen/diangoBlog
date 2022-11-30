@@ -1,0 +1,15 @@
+.wrap {
+  height: calc(100vh - 60px);
+
+  &::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .wrap_content {
+    vertical-align: middle;
+  }
+}

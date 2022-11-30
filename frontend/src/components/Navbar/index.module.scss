@@ -1,0 +1,13 @@
+.navbar {
+
+  :global(.navbar) {
+
+    &-wrapper {
+      min-width: 800px;
+    }
+
+    &-tab {
+      text-decoration: none !important;
+    }
+  }
+}

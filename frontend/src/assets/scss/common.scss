@@ -1,0 +1,55 @@
+/** 一些公共样式，挺好用的，建议熟悉 */
+
+@import '@tezign/intelligence-common/lib/style/index.scss';
+
+@import './overwrite.scss';
+
+@import './mixin.scss';
+
+@import './variables.scss';
+
+.bg-contain {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tz-link {
+  color: $color-primary !important;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-primary-dark !important;
+  }
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.box-sizing-border {
+  box-sizing: border-box;
+}
+
+.position-absolute-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.color-white {
+  color: $color-white;
+}
+
+.word-break-all {
+  word-break: break-all;
+}

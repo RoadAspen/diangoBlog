@@ -1,0 +1,8 @@
+/* * ---------------- fix anticon */
+.anticon {
+  vertical-align: unset !important;
+}
+
+.material-badge-wrap-box .material-badge-wrap-list a {
+  color: var(--color-primary, #0cc5ae);
+}

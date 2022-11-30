@@ -1,0 +1,14 @@
+.login {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: $color-bg;
+  &_panel {
+    width: 400px;
+    margin: calc(50vh - 150px) auto;
+  }
+  &_input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}

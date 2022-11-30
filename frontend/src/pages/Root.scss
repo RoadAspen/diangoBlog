@@ -1,0 +1,19 @@
+// @import '@tezign/intelligence-common/lib/style/variables';
+
+@import '@tezign/intelligence-common/lib/style/variables.scss';
+
+body #root {
+  // IE下不支持--micro-site-height，直接设置为主站下运行 @author 梅志威
+  height: calc(100vh - #{$primary-navigation-height});
+  // height: var(--micro-site-height, 100vh);
+}
+
+button {
+  // 禁掉 button 初始样式
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none !important;
+  }
+  outline: none !important;
+}
