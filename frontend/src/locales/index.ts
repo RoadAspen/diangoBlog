@@ -3,7 +3,8 @@ import LoginCN from './login/zh-CN';
 
 export default () => {
   const langMap = {
-    'en-US': { ...UILocalesEN },
-    'zh-CN': { ...UILocalesCN },
+    'en-US': { ...LoginEN },
+    'zh-CN': { ...LoginCN },
   };
+  return langMap;
 };

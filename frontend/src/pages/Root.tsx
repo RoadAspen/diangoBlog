@@ -5,21 +5,17 @@
  */
 import '@/assets/scss/common.scss';
 import RoutePath from '@/configs/RoutePath';
-import { isCN, lang } from '@/locales';
-import { setLang } from '@tezign/intelligence-common-dam/lib/locales';
-import Themes from '@tezign/intelligence-common/lib/components/themes';
+import Themes from '@/components/theme/Themes';
 import moment from 'moment';
 import 'moment/locale/es-us';
 import 'moment/locale/zh-cn';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import { LocaleProvider } from 'tezign-ui';
+import { LocaleProvider } from 'antd';
 import './Root.scss';
-
+const lang = 'zh-CN';
 moment.locale(lang);
-
-setLang({ 'zh-CN': {}, 'en-US': {} });
 
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ './Login'));
 

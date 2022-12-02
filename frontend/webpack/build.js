@@ -63,12 +63,12 @@ module.exports = async () => merge(await getConfig(), {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: `${assets_folder_name}/[name].[contentHash].css`,
-      chunkFilename: `${assets_folder_name}/[name].[contentHash].css`,
+      filename: `${assets_folder_name}/css/[name].[contentHash].css`,
+      chunkFilename: `${assets_folder_name}/css/[name].[contentHash].css`,
     }),
     new HtmlWebpackPlugin({
       env: process.env.__ENV__,
-      filename: '../index.html'
+      filename: '../src/index.html'
     }),
     // if you need 查看打包后体积
     // ,new BundleAnalyzerPlugin()

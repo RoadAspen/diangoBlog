@@ -1,11 +1,6 @@
 /**
- * tezign ownership
- * @owner weichenchen
- * @team N1
+ * @description 内部页面公共部分
  */
-import { GlobalWaterMark } from '@tezign/intelligence-common';
-import Notice from '@tezign/intelligence-common/lib/components/notice';
-import navbarService from '@tezign/intelligence-common/lib/services/navbar';
 import classNames from 'classnames';
 import React, { ReactNode, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
@@ -30,15 +25,6 @@ export default (props: Props) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
-    navbarService
-      .getProjectVersion()
-      .then((res) => {
-        const { data } = res || {};
-        setIsNewNav(data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
   }, []);
   return (
     <>
@@ -51,7 +37,6 @@ export default (props: Props) => {
         rightNode={navbarRightNode}
         languageVisible={false}
       />
-      <Notice />
       <main
         className={classNames(style.main, 'bgc-bg-dark', {
           [style.main_full]: fullScreen,
@@ -61,7 +46,6 @@ export default (props: Props) => {
         id="main-layout"
       >
         <div className={classNames(style.main_container)}>{children}</div>
-        <GlobalWaterMark />
       </main>
     </>
   );

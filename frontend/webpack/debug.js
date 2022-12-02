@@ -11,9 +11,9 @@ module.exports = async () => merge(await getConfig(true), {
   mode: 'development',
   entry: [ '../src/index.tsx' ],
   output: {
-    path: resolve(__dirname, '../tmp'),
-    filename: `${constants.assets_folder_name}/[name].js`,
-    chunkFilename: `${constants.assets_folder_name}/[name].js`,
+    path: resolve(__dirname, '../dist'),
+    filename: `${constants.assets_folder_name}/js/[name].js`,
+    chunkFilename: `${constants.assets_folder_name}/js/[name].js`,
     publicPath: '/'
   },
   devServer: {
@@ -27,7 +27,7 @@ module.exports = async () => merge(await getConfig(true), {
     disableHostCheck: true,
     hotOnly: true
   },
-  devtool: '#source-map',
+  devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(), // enable HMR globally
     new HtmlWebpackPlugin({
