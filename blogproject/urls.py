@@ -18,5 +18,6 @@ from django.urls import path , include
 # 根路由，所有的接口url 的入口
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
+    path('blog/', include('blog.urls')),
+    path('tasks/', include('tasks.urls')),
 ]

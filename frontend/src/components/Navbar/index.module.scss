@@ -1,13 +1,11 @@
+
 .navbar {
 
-  :global(.navbar) {
+  &_wrapper {
+    min-width: 800px;
+  }
 
-    &-wrapper {
-      min-width: 800px;
-    }
-
-    &-tab {
-      text-decoration: none !important;
-    }
+  &-tab {
+    text-decoration: none !important;
   }
 }

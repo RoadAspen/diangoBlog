@@ -12,30 +12,29 @@ import 'moment/locale/zh-cn';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
-import { LocaleProvider } from 'antd';
 import './Root.scss';
 const lang = 'zh-CN';
 moment.locale(lang);
 
 const Login = lazy(() => import(/* webpackChunkName: "Login" */ './Login'));
+const Blog = lazy(() => import(/* webpackChunkName: "Login" */ './blog'));
 
 export default () => {
   return (
-    <LocaleProvider>
-      <Themes>
-        <RecoilRoot>
-          <BrowserRouter>
-            <Suspense fallback={null}>
-              <Switch>
-                {/* 本地开发用的登陆页 */}
-                {process.env.REACT_APP_ENV !== 'production' && (
-                  <Route exact path={[RoutePath.login, '/login']} component={Login} />
-                )}
-              </Switch>
-            </Suspense>
-          </BrowserRouter>
-        </RecoilRoot>
-      </Themes>
-    </LocaleProvider>
+    <Themes>
+      <RecoilRoot>
+        <BrowserRouter>
+          <Suspense fallback={null}>
+            <Switch>
+              {/* 本地开发用的登陆页 */}
+              {process.env.REACT_APP_ENV !== 'production' && (
+                <Route exact path={[RoutePath.login, '/login']} component={Login} />
+              )}
+              <Route path={RoutePath.blog} component={Blog} />
+            </Switch>
+          </Suspense>
+        </BrowserRouter>
+      </RecoilRoot>
+    </Themes>
   );
 };

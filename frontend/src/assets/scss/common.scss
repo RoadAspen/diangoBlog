@@ -1,10 +1,6 @@
 /** 一些公共样式，挺好用的，建议熟悉 */
 
-@import '@tezign/intelligence-common/lib/style/index.scss';
-
 @import './overwrite.scss';
-
-@import './mixin.scss';
 
 @import './variables.scss';
 
@@ -15,12 +11,12 @@
 }
 
 .tz-link {
-  color: $color-primary !important;
+  color: blue !important;
   cursor: pointer;
   transition: color 0.2s;
 
   &:hover {
-    color: $color-primary-dark !important;
+    color: blueviolet !important;
   }
 }
 
@@ -47,7 +43,7 @@
 }
 
 .color-white {
-  color: $color-white;
+  color: white;
 }
 
 .word-break-all {

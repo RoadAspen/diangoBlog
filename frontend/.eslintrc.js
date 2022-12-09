@@ -25,5 +25,6 @@ module.exports = {
     'no-return-assign': 'off',
     'max-nested-callbacks': ['warn', { max: 5 }],
     '@typescript-eslint/prefer-optional-chain': 'off',
+    'no-require-imports': 'off',
   },
 };

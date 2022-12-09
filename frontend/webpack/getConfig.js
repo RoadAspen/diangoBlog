@@ -1,59 +1,58 @@
-const { resolve, join } = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { DefinePlugin } = require("webpack");
-const webpack = require("webpack");
+/* eslint-disable @typescript-eslint/no-require-imports */
+const { resolve, join } = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { DefinePlugin } = require('webpack');
+const webpack = require('webpack');
 
-const constants = require("./constants");
+const constants = require('./constants');
 
 module.exports = async function (debug = false) {
   let plugins = [
     new webpack.NamedModulesPlugin(),
     new DefinePlugin({
-      "process.env.__ENV__": JSON.stringify(process.env.__ENV__),
-      "process.env.RELEASE_ENV": JSON.stringify(process.env.RELEASE_ENV),
+      'process.env.__ENV__': JSON.stringify(process.env.__ENV__),
+      'process.env.RELEASE_ENV': JSON.stringify(process.env.RELEASE_ENV),
     }),
   ];
 
   return {
     resolve: {
-      extensions: [".ts", ".tsx", ".js", ".jsx"],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
-        "react-dom": debug ? "@hot-loader/react-dom" : "react-dom",
-        "@": join(__dirname, "../src"),
+        'react-dom': debug ? '@hot-loader/react-dom' : 'react-dom',
+        '@': join(__dirname, '../src'),
       },
     },
-    context: resolve(__dirname, "../src"),
+    context: resolve(__dirname, '../src'),
     module: {
       rules: [
         {
           test: /\.(ts|tsx|js|jsx)$/,
           include: [
-            process.env.__ENV__ !== "DEV"
-              ? resolve(__dirname, "../node_modules")
-              : false,
-            resolve(__dirname, "../src"),
+            process.env.__ENV__ !== 'DEV' ? resolve(__dirname, '../node_modules') : false,
+            resolve(__dirname, '../src'),
           ].filter(Boolean),
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
         {
           test: /\.css$/,
           use: [
-            debug ? "style-loader" : MiniCssExtractPlugin.loader,
-            { loader: "css-loader", options: { importLoaders: 1 } },
-            "postcss-loader",
+            debug ? 'style-loader' : MiniCssExtractPlugin.loader,
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+            'postcss-loader',
           ],
         },
         {
           test: /\.scss$/,
           exclude: /\.module\.(scss|sass)$/,
           loaders: [
-            debug ? "style-loader" : MiniCssExtractPlugin.loader,
-            { loader: "css-loader", options: { importLoaders: 2 } },
-            "postcss-loader",
+            debug ? 'style-loader' : MiniCssExtractPlugin.loader,
+            { loader: 'css-loader', options: { importLoaders: 2 } },
+            'postcss-loader',
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
               options: {
-                implementation: require("sass"),
+                implementation: require('sass'),
               },
             },
           ],
@@ -61,20 +60,20 @@ module.exports = async function (debug = false) {
         {
           test: /\.module\.(scss|sass)$/,
           loaders: [
-            debug ? "style-loader" : MiniCssExtractPlugin.loader,
+            debug ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
                 importLoaders: 2,
                 modules: true,
-                localIdentName: "[name]__[local]-[hash:base64:5]",
+                localIdentName: '[name]__[local]-[hash:base64:5]',
               },
             },
-            "postcss-loader",
+            'postcss-loader',
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
               options: {
-                implementation: require("sass"),
+                implementation: require('sass'),
               },
             },
           ],
@@ -82,19 +81,19 @@ module.exports = async function (debug = false) {
         {
           test: /\.less$/,
           loaders: [
-            debug ? "style-loader" : MiniCssExtractPlugin.loader,
-            { loader: "css-loader", options: { importLoaders: 2 } },
-            "postcss-loader",
-            { loader: "less-loader", options: { javascriptEnabled: true } },
+            debug ? 'style-loader' : MiniCssExtractPlugin.loader,
+            { loader: 'css-loader', options: { importLoaders: 2 } },
+            'postcss-loader',
+            { loader: 'less-loader', options: { javascriptEnabled: true } },
           ],
         },
         {
           test: /\.svg$/,
-          exclude: [resolve(__dirname, "../node_modules")],
+          exclude: [resolve(__dirname, '../node_modules')],
           use: [
-            "@svgr/webpack",
+            '@svgr/webpack',
             {
-              loader: "url-loader",
+              loader: 'url-loader',
               options: {
                 limit: 8192,
               },
@@ -105,7 +104,7 @@ module.exports = async function (debug = false) {
           test: /\.(jpe?g|png|gif|svg)$/i,
           use: [
             {
-              loader: "url-loader",
+              loader: 'url-loader',
               options: {
                 limit: 10000,
                 name: `${constants.assets_folder_name}/images/[hash].[ext]`,
@@ -117,7 +116,7 @@ module.exports = async function (debug = false) {
           test: /\.(ttf|eot|woff|otf|woff2|mp3)$/i,
           use: [
             {
-              loader: "file-loader",
+              loader: 'file-loader',
               options: {
                 limit: 10000,
                 name: `${constants.assets_folder_name}/fonts/[hash].[ext]`,

@@ -3,5 +3,5 @@ module.exports = {
   assets_folder_name: 'static',
   // debug 模式下网站的默认端口号
   port: 8080,
-  app_name: 'ui_product',
-}
+  app_name: 'frontend',
+};

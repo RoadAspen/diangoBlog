@@ -5,9 +5,9 @@ import { useState, useEffect, useCallback } from 'react';
  * @param deps
  * @returns
  */
-const useService = (promise: Promise<any>, deps: any[] = []) => {
+function useService<T>(promise: Promise<T>, deps: any[] = []) {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<T>(null as T);
   const refresh = useCallback(() => {
     (async () => {
       setLoading(true);
@@ -15,11 +15,11 @@ const useService = (promise: Promise<any>, deps: any[] = []) => {
       setData(data);
       setLoading(false);
     })();
-  }, deps);
+  }, [promise]);
   useEffect(() => {
     refresh();
   }, deps);
   return [loading, data, refresh];
-};
+}
 
 export default useService;

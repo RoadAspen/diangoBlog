@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog'
+    'blog',
+    'tasks'
 ]
 # 中间件
 MIDDLEWARE = [
@@ -51,11 +52,14 @@ MIDDLEWARE = [
 ]
 # 根路由
 ROOT_URLCONF = 'blogproject.urls'
+# 跨域
+CORS_ORIGIN_ALLOW_ALL = True
+
 # 模版
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
